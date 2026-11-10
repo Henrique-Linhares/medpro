@@ -11,6 +11,7 @@ import com.medpro.medpro.model.entity.Medico;
 import com.medpro.medpro.repository.MedicoRepository;
 
 import jakarta.transaction.Transactional;
+import jakarta.validation.Valid;
 
 @RestController 
 @RequestMapping ("medicos")
@@ -21,7 +22,7 @@ public class MedicoController {
 
     @PostMapping
     @Transactional
-    public void cadastrar(@RequestBody DadosCadastroMedico dados){
+    public void cadastrar(@RequestBody @Valid DadosCadastroMedico dados){
         medicoRepository.save(new Medico(dados));
     }
     
